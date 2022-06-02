@@ -1,3 +1,15 @@
+# Einundzwanzig Widget
+
+<img src="./images/einundzwanzig.jpg" style="zoom: 67%;" />
+
+## Tutorial
+
+1. Install the app "Scriptable" -> [Apple Appstore - Scriptable](https://apps.apple.com/ch/app/scriptable/id1405459188?l=en)
+2. Open the app and click the "+" sign on the top right corner
+3. Paste the following script created by [FlashmanBTC](https://twitter.com/FlashmanBTC:
+
+```js
+
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
 // icon-color: deep-gray; icon-glyph: bolt;
@@ -122,3 +134,16 @@ async function createWidget() {
   // Return the created widget
   return listwidget;
 }
+```
+
+4. Click on the bottom left corner the "sliders" to name your script. For example: Moscow Time
+5. Click close and done
+6. Go to the homescreen, press and hold for a few seconds to make the icons move. Tab on the top left corner the "+" symbol
+
+<img src="./images/2.PNG" style="zoom: 50%;" />
+
+7. Scroll down untill you find the "Scriptable" App. Select it and scroll to the right for the full sized version.
+
+<img src="./images/3.PNG" style="zoom: 30%;" />
+
+8. Click "Add Widget" and tab the new created widget to edit it. Select the created script and you're done :)
