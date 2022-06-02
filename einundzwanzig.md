@@ -6,7 +6,8 @@
 
 1. Install the app "Scriptable" -> [Apple Appstore - Scriptable](https://apps.apple.com/ch/app/scriptable/id1405459188?l=en)
 2. Open the app and click the "+" sign on the top right corner
-3. Paste the following script created by [FlashmanBTC](https://twitter.com/FlashmanBTC:
+3. Paste the following script created by [FlashmanBTC](https://twitter.com/FlashmanBTC):
+4. You can edit scale if you have a smaller device. Tested it with iPhone 11 Pro and iPhone SE 2020
 
 ```js
 
@@ -136,9 +137,9 @@ async function createWidget() {
 }
 ```
 
-4. Click on the bottom left corner the "sliders" to name your script. For example: Moscow Time
-5. Click close and done
-6. Go to the homescreen, press and hold for a few seconds to make the icons move. Tab on the top left corner the "+" symbol
+5. Click on the bottom left corner the "sliders" to name your script. For example: Moscow Time
+6. Click close and done
+7. Go to the homescreen, press and hold for a few seconds to make the icons move. Tab on the top left corner the "+" symbol
 
 <img src="./images/2.PNG" style="zoom: 50%;" />
 
