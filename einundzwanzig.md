@@ -1,4 +1,5 @@
 # Einundzwanzig Widget
+Value4Value: FlashmanBTC@ln.tips or via LNTXBOT FlashmanBTC
 
 <img src="./images/einundzwanzig.jpg" style="zoom: 50%;" />
 
