@@ -1,7 +1,8 @@
 # Einundzwanzig Widget
 
-<img src="./images/einundzwanzig.jpg" style="zoom: 67%;" />
+<img src="./images/einundzwanzig.jpg" style="zoom: 50%;" />
 
+V1 Blockheight 738895
 ## Tutorial
 
 1. Install the app "Scriptable" -> [Apple Appstore - Scriptable](https://apps.apple.com/ch/app/scriptable/id1405459188?l=en)
