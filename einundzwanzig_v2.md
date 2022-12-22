@@ -1,9 +1,9 @@
 # Einundzwanzig Widget
 Value4Value: FlashmanBTC@ln.tips or via LNTXBOT FlashmanBTC
 
-<img src="./images/einundzwanzig.jpg" style="zoom: 50%;" />
+<img src="./images/einundzwanzig2.jpg" style="zoom: 50%;" /><img src="./images/einundzwanzig3.jpg" style="zoom: 50%;" />
 
-V2 Blockheight 768513
+V2 Blockheight 768541
 
 ```js
 
@@ -15,10 +15,14 @@ V2 Blockheight 768513
 // Font scaling for smaller displays
 // Scale  0 = iPhone 11 Pro
 // Scale -4 = iPhone SE 2020
-scale = -4
+scale = 0
 
 // Change currency EUR or USD
-currency = "USD"
+currency = "EUR"
+
+// Change fee order
+// 1 = high to low
+h_to_l = 0
 
 // Show infos
 // Attencation max 5!, 1 = on
@@ -26,50 +30,57 @@ show_block  = 1
 show_fees   = 1
 show_moscow = 1
 show_price  = 1
-show_supply = 0
-show_hash   = 1
+show_supply = 1
+show_hash   = 0
 
 // Request data
 let req_logo = new Request('https://i.ibb.co/MSSJYtq/Einundzwanzig-logo.png');
 let Einundzwanzig = await req_logo.loadImage();
 
-if(show_block == 1) {
-  let req_height = new Request('https://mempool.space/api/blocks/tip/height');
-  let blockHeight = await req_height.loadString();
-  let position_block = blockHeight.length-3;
-  let delimiter_block = " ";
-  blockHeight = [blockHeight.slice(0, position_block), delimiter_block, blockHeight.slice(position_block)].join('');
-}
+let req_height = new Request('https://mempool.space/api/blocks/tip/height');
+let blockHeight = await req_height.loadString();
+let position_block = blockHeight.length-3;
+let delimiter_block = " ";
+blockHeight = [blockHeight.slice(0, position_block), delimiter_block, blockHeight.slice(position_block)].join('');
 
-if(show_fees == 1) {
-  let req_fees = new Request('https://mempool.space/api/v1/fees/recommended');
-  let Fees = await req_fees.loadJSON();
-  fast = Fees.fastestFee.toString();
-  halfHour = Fees.halfHourFee.toString();
-  hour = Fees.hourFee.toString();
-}
-	
+let req_fees = new Request('https://mempool.space/api/v1/fees/recommended');
+let Fees = await req_fees.loadJSON();
+fast = Fees.fastestFee.toString();
+halfHour = Fees.halfHourFee.toString();
+hour = Fees.hourFee.toString();
+
+
+
 // let req_moscow = new Request('https://bitcoinexplorer.org/api/price/usd/sats');
 let req_moscow = new Request('https://blockchain.info/tobtc?currency='+currency+'&value=1');
 let MoscowTimeFull = await req_moscow.loadString();
-let MoscowTime = MoscowTimeFull.substring(6);
+let MoscowTime = Number(MoscowTimeFull).toFixed(8);
+MoscowTime = MoscowTime.substring(6);
 let position_moscow = MoscowTime.length-2;
 let delimiter_moscow = ":";
 MoscowTime = [MoscowTime.slice(0, position_moscow), delimiter_moscow, MoscowTime.slice(position_moscow)].join('');
-
+//MoscowTime = Number(MoscowTime).toFixed(8);
+	
 // let req_shitcoin = new Request('https://bitcoinexplorer.org/api/price/usd');
 req_shitcoin = new Request('https://blockchain.info/ticker');
 let Shitcoin = await req_shitcoin.loadJSON();
 // let ShitcoinUSD = await req_shitcoin.loadString();
 // let Supply = await req_supply.loadString();
-if(currency == "EUR")
+if(currency == "EUR") {
   Shitcoin = Shitcoin.EUR.last.toString();
-else
+} else {
   Shitcoin = Shitcoin.USD.last.toString();
+}
+	
+let req_supply = new Request('https://bitcoinexplorer.org/api/blockchain/coins');
+let Supply = await req_supply.loadString();
+Supply = Math.round(Supply * 100) / 100;
+Supply = String(Supply);
 
-if(show_supply == 1)
-  let req_supply = new Request('https://bitcoinexplorer.org/api/blockchain/coins');
-
+req_hashrate= new Request('https://bitcoinexplorer.org/api/mining/hashrate');
+let Hashrate = await req_hashrate.loadJSON();
+Hashvalue = Hashrate['1Day'].val.toString();
+HashrateAB = Hashrate['1Day'].unitAbbreviation.toString();
 
 let widget = await createWidget();
 
@@ -116,19 +127,24 @@ async function createWidget() {
     feesTitel.centerAlignText();
     feesTitel.font = Font.boldSystemFont(16+scale);
     feesTitel.textColor = new Color("#FFFFFF");
-    let fees = listwidget.addText(fast + " H | " + halfHour + " M | " + hour + " L");
+	if(h_to_l == 1) {
+      fees = listwidget.addText(fast + " H | " + halfHour + " M | " + hour + " L");
+	} else {
+	 fees = listwidget.addText(hour + " L | " + halfHour + " M | " + fast + " H");
+	}
     fees.centerAlignText();
-    if(fast < 10)
+    if(fast < 10) {
       fees.font = Font.boldSystemFont(40+scale);
-    else if(fast < 100)
+	} else if(fast < 100) {
        fees.font = Font.boldSystemFont(36+scale);
-    else
+	} else {
       fees.font = Font.boldSystemFont(30+scale);
+	}
     fees.textColor = new Color("#F7931A");
   }
 
   // Moscow Time
-  if (show_moscow == 1) {
+  if(show_moscow == 1) {
     let moscowTitel = listwidget.addText("Moscow Time");
     moscowTitel.centerAlignText();
     moscowTitel.font = Font.boldSystemFont(16+scale);
@@ -157,10 +173,22 @@ async function createWidget() {
     supplyTitel.centerAlignText();
     supplyTitel.font = Font.boldSystemFont(16+scale);
     supplyTitel.textColor = new Color("#FFFFFF");
- 	  let supply = listwidget.addText(Supply);  
+ 	let supply = listwidget.addText(Supply);  
     supply.centerAlignText();  
     supply.font = Font.boldSystemFont(24+scale);  
     supply.textColor = new Color("#F7931A");
+  }
+	
+  // Bitcoin hashrate 
+  if(show_hash == 1) {  
+    let hashTitel = listwidget.addText("Hashrate");
+    hashTitel.centerAlignText();
+    hashTitel.font = Font.boldSystemFont(16+scale);
+    hashTitel.textColor = new Color("#FFFFFF");
+ 	let hash = listwidget.addText(Hashvalue+" "+HashrateAB);  
+    hash.centerAlignText();  
+    hash.font = Font.boldSystemFont(24+scale);  
+    hash.textColor = new Color("#F7931A");
   }
   
   // Return the created widget
