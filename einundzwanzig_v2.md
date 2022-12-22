@@ -17,27 +17,29 @@ V2 Blockheight 768513
 // Scale -4 = iPhone SE 2020
 scale = -4
 
-// EUR or USD
+// Change currency EUR or USD
 currency = "USD"
 
-// Show parts, 1 = on
+// Show infos
+// Attencation max 5!, 1 = on
 show_block  = 1
 show_fees   = 1
 show_moscow = 1
 show_price  = 1
-show_supply = 1
+show_supply = 0
+show_hash   = 1
 
 // Request data
 let req_logo = new Request('https://i.ibb.co/MSSJYtq/Einundzwanzig-logo.png');
 let Einundzwanzig = await req_logo.loadImage();
 
-// if(show_block == 1) {
+if(show_block == 1) {
   let req_height = new Request('https://mempool.space/api/blocks/tip/height');
   let blockHeight = await req_height.loadString();
   let position_block = blockHeight.length-3;
   let delimiter_block = " ";
   blockHeight = [blockHeight.slice(0, position_block), delimiter_block, blockHeight.slice(position_block)].join('');
-//}
+}
 
 if(show_fees == 1) {
   let req_fees = new Request('https://mempool.space/api/v1/fees/recommended');
@@ -46,7 +48,7 @@ if(show_fees == 1) {
   halfHour = Fees.halfHourFee.toString();
   hour = Fees.hourFee.toString();
 }
- 
+	
 // let req_moscow = new Request('https://bitcoinexplorer.org/api/price/usd/sats');
 let req_moscow = new Request('https://blockchain.info/tobtc?currency='+currency+'&value=1');
 let MoscowTimeFull = await req_moscow.loadString();
@@ -60,14 +62,14 @@ req_shitcoin = new Request('https://blockchain.info/ticker');
 let Shitcoin = await req_shitcoin.loadJSON();
 // let ShitcoinUSD = await req_shitcoin.loadString();
 // let Supply = await req_supply.loadString();
-if(currency == "EUR")  
+if(currency == "EUR")
   Shitcoin = Shitcoin.EUR.last.toString();
-else  
+else
   Shitcoin = Shitcoin.USD.last.toString();
 
-if(show_supply == 1) {
+if(show_supply == 1)
   let req_supply = new Request('https://bitcoinexplorer.org/api/blockchain/coins');
-}
+
 
 let widget = await createWidget();
 
@@ -86,7 +88,7 @@ async function createWidget() {
   // Create new empty ListWidget instance
   let listwidget = new ListWidget();
   // Refresh widget  
-  let nextRefresh = Date.now() + 1000*10
+  let nextRefresh = Date.now() + 1000*60 
   listwidget.refreshAfterDate = new Date(nextRefresh)
 
   // Set new background color
@@ -97,7 +99,7 @@ async function createWidget() {
   let Spacer = listwidget.addSpacer(14)
   
   // Blockheight
-  if (show_block == 1) {
+  if(show_block == 1) {
     let blockTitel = listwidget.addText("Blockheight");
     blockTitel.centerAlignText();
     blockTitel.font = Font.boldSystemFont(16+scale);
@@ -113,7 +115,7 @@ async function createWidget() {
     let feesTitel = listwidget.addText("Mempool Fees");
     feesTitel.centerAlignText();
     feesTitel.font = Font.boldSystemFont(16+scale);
-    feesTitel.textColor = new Color("#FFFFFF")  
+    feesTitel.textColor = new Color("#FFFFFF");
     let fees = listwidget.addText(fast + " H | " + halfHour + " M | " + hour + " L");
     fees.centerAlignText();
     if(fast < 10)
@@ -122,41 +124,43 @@ async function createWidget() {
        fees.font = Font.boldSystemFont(36+scale);
     else
       fees.font = Font.boldSystemFont(30+scale);
-    fees.textColor = new Color("#F7931A")
+    fees.textColor = new Color("#F7931A");
   }
 
   // Moscow Time
-  if (show_fees == 1) {
+  if (show_moscow == 1) {
     let moscowTitel = listwidget.addText("Moscow Time");
     moscowTitel.centerAlignText();
     moscowTitel.font = Font.boldSystemFont(16+scale);
     moscowTitel.textColor = new Color("#FFFFFF");
     let moscowTime = listwidget.addText(MoscowTime);
     moscowTime.centerAlignText();
-moscowTime.font = Font.boldSystemFont(32+scale);
-    moscowTime.textColor = new Color("#F7931A");  
+    moscowTime.font = Font.boldSystemFont(32+scale);
+    moscowTime.textColor = new Color("#F7931A");
   }
-  
+ 
   // Shitcoin/BTC
-  let shitcoinTitel = listwidget.addText(currency+"/BTC");
-  shitcoinTitel.centerAlignText();
-  shitcoinTitel.font = Font.boldSystemFont(16+scale);
-  shitcoinTitel.textColor = new Color("#FFFFFF") 
-  let shitcoin = listwidget.addText(Shitcoin);
-  shitcoin.centerAlignText();
-  shitcoin.font = Font.boldSystemFont(24+scale);
-  shitcoin.textColor = new Color("#F7931A")
-  
+  if(show_price == 1) { 
+    let shitcoinTitel = listwidget.addText(currency+"/BTC");
+    shitcoinTitel.centerAlignText();
+    shitcoinTitel.font = Font.boldSystemFont(16+scale);
+    shitcoinTitel.textColor = new Color("#FFFFFF");
+    let shitcoin = listwidget.addText(Shitcoin);
+    shitcoin.centerAlignText();
+    shitcoin.font = Font.boldSystemFont(24+scale);
+    shitcoin.textColor = new Color("#F7931A");
+  }
+
   // Bitcoin supply  
   if(show_supply == 1) {  
     let supplyTitel = listwidget.addText("Supply");
     supplyTitel.centerAlignText();
     supplyTitel.font = Font.boldSystemFont(16+scale);
     supplyTitel.textColor = new Color("#FFFFFF");
-  let supply = listwidget.addText(Supply);  
+ 	  let supply = listwidget.addText(Supply);  
     supply.centerAlignText();  
     supply.font = Font.boldSystemFont(24+scale);  
-    supply.textColor = new Color("#F7931A")
+    supply.textColor = new Color("#F7931A");
   }
   
   // Return the created widget
