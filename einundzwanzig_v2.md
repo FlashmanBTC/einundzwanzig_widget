@@ -4,13 +4,6 @@ Value4Value: FlashmanBTC@ln.tips or via LNTXBOT FlashmanBTC
 <img src="./images/einundzwanzig.jpg" style="zoom: 50%;" />
 
 V2 Blockheight 768513
-## Tutorial
-
-1. Install the app "Scriptable" -> [Apple Appstore - Scriptable](https://apps.apple.com/ch/app/scriptable/id1405459188?l=en)
-2. Open the app and click the "+" sign on the top right corner
-3. Paste the following script created by [FlashmanBTC](https://twitter.com/FlashmanBTC):
-4. You can edit scale if you have a smaller device. Tested it with iPhone 11 Pro and iPhone SE 2020
-5. Fixed Moscow Time and Supply to 2 digits
 
 ```js
 
