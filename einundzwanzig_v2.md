@@ -29,7 +29,7 @@ currency = "EUR"
 h_to_l = 0
 
 // Show infos
-// Attencation max 5!, 1 = on
+// Attention max 5!, 1 = on
 show_block  = 1
 show_fees   = 1
 show_moscow = 1
