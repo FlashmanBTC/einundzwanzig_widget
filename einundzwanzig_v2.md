@@ -4,6 +4,10 @@ Value4Value: FlashmanBTC@ln.tips or via LNTXBOT FlashmanBTC
 <img src="./images/einundzwanzig2.jpg" style="zoom: 50%;" /><img src="./images/einundzwanzig3.jpg" style="zoom: 50%;" />
 
 V2 Blockheight 768541
+1. Install the app "Scriptable" -> [Apple Appstore - Scriptable](https://apps.apple.com/ch/app/scriptable/id1405459188?l=en)
+2. Open the app and click the "+" sign on the top right corner
+3. Paste the following script created by [FlashmanBTC](https://twitter.com/FlashmanBTC):
+4. You can edit scale if you have a smaller device. Tested it with iPhone 11 Pro and iPhone SE 2020
 
 ```js
 
@@ -195,3 +199,19 @@ async function createWidget() {
   return listwidget;
 }
 ```
+
+5. Click on the bottom left corner the "sliders" to name your script. For example: Einundzwanzig
+6. Click close and done
+7. Go to the homescreen, press and hold for a few seconds to make the icons move. Tab on the top left corner the "+" symbol
+
+<img src="./images/add_widget.jpg" style="zoom: 20%;" />
+
+7. Scroll down untill you find the "Scriptable" App. Select it and scroll to the right for the full sized version.
+
+<img src="./images/search_widget.jpg" style="zoom: 20%;" />
+
+8. Click "Add Widget" and tab the new created widget to edit it. Select the created script and you're done :D
+
+<img src="./images/create_widget.png" style="zoom: 20%;" />
+
+<img src="./images/add_script.jpg" style="zoom: 20%;" />
