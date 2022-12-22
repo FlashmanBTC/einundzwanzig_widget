@@ -10,6 +10,7 @@ V1 Blockheight 738895
 2. Open the app and click the "+" sign on the top right corner
 3. Paste the following script created by [FlashmanBTC](https://twitter.com/FlashmanBTC):
 4. You can edit scale if you have a smaller device. Tested it with iPhone 11 Pro and iPhone SE 2020
+5. Fixed Moscow Time and Supply to 2 digits
 
 ```js
 
@@ -51,6 +52,10 @@ halfHour = Fees.halfHourFee.toString();
 hour = Fees.hourFee.toString();
 
 MoscowTime = [MoscowTime.slice(0, position_moscow), delimiter_moscow, MoscowTime.slice(position_moscow)].join('');
+while (MoscowTime.length < 5)  {MoscowTime = '0' + MoscowTime};
+
+Supply = Math.round(Supply * 100) / 100;
+Supple = String(Supply);
 
 let widget = await createWidget();
 
