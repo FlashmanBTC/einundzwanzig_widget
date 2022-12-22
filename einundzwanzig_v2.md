@@ -1,3 +1,22 @@
+# Einundzwanzig Widget
+Value4Value: FlashmanBTC@ln.tips or via LNTXBOT FlashmanBTC
+
+<img src="./images/einundzwanzig.jpg" style="zoom: 50%;" />
+
+V2 Blockheight 768513
+## Tutorial
+
+1. Install the app "Scriptable" -> [Apple Appstore - Scriptable](https://apps.apple.com/ch/app/scriptable/id1405459188?l=en)
+2. Open the app and click the "+" sign on the top right corner
+3. Paste the following script created by [FlashmanBTC](https://twitter.com/FlashmanBTC):
+4. You can edit scale if you have a smaller device. Tested it with iPhone 11 Pro and iPhone SE 2020
+5. Fixed Moscow Time and Supply to 2 digits
+
+```js
+
+// Variables used by Scriptable.
+// These must be at the very top of the file. Do not edit.
+// icon-color: deep-gray; icon-glyph: bolt;
 // Einundzwanzig Edition by FlashmanBTC
 
 // Font scaling for smaller displays
@@ -121,3 +140,33 @@ async function createWidget() {
     moscowTitel.textColor = new Color("#FFFFFF");
     let moscowTime = listwidget.addText(MoscowTime);
     moscowTime.centerAlignText();
+moscowTime.font = Font.boldSystemFont(32+scale);
+    moscowTime.textColor = new Color("#F7931A");  
+  }
+  
+  // Shitcoin/BTC
+  let shitcoinTitel = listwidget.addText(currency+"/BTC");
+  shitcoinTitel.centerAlignText();
+  shitcoinTitel.font = Font.boldSystemFont(16+scale);
+  shitcoinTitel.textColor = new Color("#FFFFFF") 
+  let shitcoin = listwidget.addText(Shitcoin);
+  shitcoin.centerAlignText();
+  shitcoin.font = Font.boldSystemFont(24+scale);
+  shitcoin.textColor = new Color("#F7931A")
+  
+  // Bitcoin supply  
+  if(show_supply == 1) {  
+    let supplyTitel = listwidget.addText("Supply");
+    supplyTitel.centerAlignText();
+    supplyTitel.font = Font.boldSystemFont(16+scale);
+    supplyTitel.textColor = new Color("#FFFFFF");
+  let supply = listwidget.addText(Supply);  
+    supply.centerAlignText();  
+    supply.font = Font.boldSystemFont(24+scale);  
+    supply.textColor = new Color("#F7931A")
+  }
+  
+  // Return the created widget
+  return listwidget;
+}
+```
