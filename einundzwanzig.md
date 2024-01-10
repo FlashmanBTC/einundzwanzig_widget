@@ -133,7 +133,7 @@ async function createWidget() {
   supplyTitel.centerAlignText();
   supplyTitel.font = Font.boldSystemFont(16+scale);
   supplyTitel.textColor = new Color("#FFFFFF")	
-  let supply = listwidget.addText(Supply);
+  let supply = listwidget.addText(Supple);
   supply.centerAlignText();
   supply.font = Font.boldSystemFont(24+scale);
   supply.textColor = new Color("#F7931A")
