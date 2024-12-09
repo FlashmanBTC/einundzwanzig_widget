@@ -1,7 +1,7 @@
 Einundzwanzig Widget
 Value4Value: FlashmanBTC@getalby.com
 
-<img src="./images/einundzwanzig2.jpg" style="zoom: 50%;" /><img src="./images/einundzwanzig3.jpg" style="zoom: 50%;" />
+<img src="./images/Einundzwanzig_v5_pic1.jpg" style="zoom: 33%;" /><img src="./images/Einundzwanzig_v5_pic2.jpg" style="zoom: 33%;" /><img src="./images/Einundzwanzig_v5_pic3.jpg" style="zoom: 33%;" />
 
 V4 Blockheight 873710
 1. Install the app "Scriptable" -> [Apple Appstore - Scriptable](https://apps.apple.com/ch/app/scriptable/id1405459188?l=en)
