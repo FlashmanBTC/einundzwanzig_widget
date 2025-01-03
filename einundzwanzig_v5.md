@@ -1,4 +1,4 @@
-!!! CURRENTLY THERE IS A PROBLEM WITH THE NEW SCRIPTABLE UPDATE !!!
+!!! CURRENTLY THERE IS A PROBLEM WITH CODE !!!
 
 Einundzwanzig Widget
 Value4Value: FlashmanBTC@getalby.com
