@@ -1,10 +1,11 @@
 # Einundzwanzig Bitcoin Widget
 
-A Bitcoin data widget for iOS built with [Scriptable](https://scriptable.app), originally created by [FlashmanBTC](https://twitter.com/FlashmanBTC) and maintained by the Einundzwanzig community.
+A Bitcoin data widget for iOS built with [Scriptable](https://scriptable.app), originally created by [FlashmanBTC](https://twitter.com/FlashmanBTC) and maintained by the Einundzwanzig community. Enhanced with parallel requests, timeout handling, status indicators, and fallback URLs.
 
 Displays live Bitcoin data directly on your iOS home screen: block height, mempool fees, Moscow Time, BTC price, circulating supply, hashrate, and difficulty adjustment.
 
-![Widget Preview](images/einundzwanzig2.jpg)
+<img src="images/theme_classic.JPEG" alt="Classic Theme" width="300">
+<img src="images/theme_mono.JPEG" alt="Mono Theme" width="300">
 
 ---
 
@@ -93,6 +94,21 @@ h_to_l = 0
 
 ---
 
+### Color Customization
+
+All colors can be customized at the top of the script. Both themes pick them up automatically.
+
+```js
+const C_BG        = "#151515"   // widget background
+const C_ACCENT    = "#F7931A"   // main value color (Bitcoin orange)
+const C_LABEL     = "#FFFFFF"   // section / row labels
+const C_DIM       = "#888888"   // status line, subtle text
+const C_ERROR     = "#555555"   // value color when data unavailable
+const C_DIVIDER   = "#2a2a2a"   // divider lines (mono theme)
+```
+
+---
+
 ### Visible Data Sections
 
 Each section can be toggled independently with `1` (on) or `0` (off).
@@ -131,11 +147,3 @@ const TIMEOUT_SEC = 6
 ```
 
 If an API does not respond within this time, the fallback URL is tried. Increase this value if you are on a slow connection, decrease it if you want faster failover.
-
----
-
-## Value for Value
-
-If you find this widget useful, consider supporting the original creator:
-
-**FlashmanBTC** — `FlashmanBTC@ln.tips` or via LNTXBOT `FlashmanBTC`
