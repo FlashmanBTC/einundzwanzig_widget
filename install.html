@@ -75,6 +75,21 @@
     .steps strong { color: #ffffff; }
     .step-num { color: #F7931A; font-weight: 700; margin-right: 8px; }
 
+    .divider {
+      border: none;
+      border-top: 1px solid #2a2a2a;
+      margin: 28px 0;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #555555;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
     .note {
       font-size: 12px;
       color: #555555;
@@ -91,25 +106,42 @@
     <div class="logo">EINUNDZWANZIG<span>●</span></div>
     <div class="subtitle">Bitcoin Widget for Scriptable · iOS</div>
 
-    <!-- Direct link to .scriptable file — Safari downloads it and offers "Open in Scriptable" -->
-    <a class="btn" href="https://raw.githubusercontent.com/orangedmind/einundzwanzig_widget/readme/einundzwanzig_v9.scriptable">
+    <div class="section-title">Option 1 — iCloud (recommended)</div>
+
+    <a class="btn" href="https://raw.githubusercontent.com/orangedmind/einundzwanzig_widget/readme/einundzwanzig_v9.scriptable" download="einundzwanzig.scriptable">
       Download Widget File
     </a>
+
+    <div class="steps">
+      <div><span class="step-num">1</span>Tap <strong>Download Widget File</strong> above</div>
+      <div><span class="step-num">2</span>In the download popup tap <strong>Download</strong>, then the download indicator</div>
+      <div><span class="step-num">3</span>Tap <strong>Share ↗</strong> → <strong>Save to Files</strong></div>
+      <div><span class="step-num">4</span>Save to <strong>iCloud Drive → Scriptable</strong></div>
+      <div><span class="step-num">5</span>Open <strong>Scriptable</strong> — the script appears automatically</div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-title">Option 2 — Manual</div>
+
+    <a class="btn btn-secondary" href="https://github.com/orangedmind/einundzwanzig_widget/blob/main/einundzwanzig.js">
+      View Script on GitHub
+    </a>
+
+    <div class="steps">
+      <div><span class="step-num">1</span>Open <strong>Scriptable</strong> and tap <strong>+</strong></div>
+      <div><span class="step-num">2</span>Copy the script from GitHub and paste it into Scriptable</div>
+      <div><span class="step-num">3</span>Name the script <strong>einundzwanzig</strong></div>
+    </div>
+
+    <hr class="divider">
 
     <a class="btn btn-secondary" href="https://apps.apple.com/app/scriptable/id1405459188">
       Get Scriptable (free)
     </a>
 
-    <div class="steps">
-      <div><span class="step-num">1</span>Install <strong>Scriptable</strong> from the App Store</div>
-      <div><span class="step-num">2</span>Open this page in <strong>Safari</strong> on your iPhone</div>
-      <div><span class="step-num">3</span>Tap <strong>Download Widget File</strong></div>
-      <div><span class="step-num">4</span>Tap <strong>Share ↗</strong> → <strong>Open in Scriptable</strong></div>
-      <div><span class="step-num">5</span>Add a large <strong>Scriptable</strong> widget to your home screen and select <strong>einundzwanzig</strong></div>
-    </div>
-
     <div class="note">
-      ⚠️ Must be opened in <strong>Safari</strong> on iOS — not Chrome or the GitHub app.<br><br>
+      ⚠️ Open this page in <strong>Safari</strong> on iOS — not Chrome or the GitHub app.<br><br>
       <a href="https://github.com/orangedmind/einundzwanzig_widget">View on GitHub</a>
     </div>
 
