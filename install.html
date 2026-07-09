@@ -49,9 +49,6 @@
       padding: 16px 24px;
       border-radius: 14px;
       margin-bottom: 16px;
-      cursor: pointer;
-      border: none;
-      width: 100%;
       transition: opacity 0.15s;
     }
 
@@ -64,15 +61,6 @@
       font-weight: 600;
     }
 
-    .note {
-      font-size: 12px;
-      color: #555555;
-      margin-top: 32px;
-      line-height: 1.6;
-    }
-
-    .note a { color: #888888; }
-
     .steps {
       text-align: left;
       background: #1e1e1e;
@@ -80,19 +68,21 @@
       padding: 16px 20px;
       margin: 24px 0;
       font-size: 14px;
-      line-height: 2;
+      line-height: 2.2;
       color: #aaaaaa;
     }
 
     .steps strong { color: #ffffff; }
     .step-num { color: #F7931A; font-weight: 700; margin-right: 8px; }
 
-    #status {
-      font-size: 13px;
-      color: #888888;
-      margin-top: 12px;
-      min-height: 20px;
+    .note {
+      font-size: 12px;
+      color: #555555;
+      margin-top: 24px;
+      line-height: 1.6;
     }
+
+    .note a { color: #888888; }
   </style>
 </head>
 <body>
@@ -101,22 +91,21 @@
     <div class="logo">EINUNDZWANZIG<span>●</span></div>
     <div class="subtitle">Bitcoin Widget for Scriptable · iOS</div>
 
-    <button class="btn" onclick="installScript()">
-      Install in Scriptable
-    </button>
+    <!-- Direct link to .scriptable file — Safari downloads it and offers "Open in Scriptable" -->
+    <a class="btn" href="https://raw.githubusercontent.com/orangedmind/einundzwanzig_widget/readme/einundzwanzig_v9.scriptable">
+      Download Widget File
+    </a>
 
     <a class="btn btn-secondary" href="https://apps.apple.com/app/scriptable/id1405459188">
       Get Scriptable (free)
     </a>
 
-    <div id="status"></div>
-
     <div class="steps">
-      <div><span class="step-num">1</span><strong>Install Scriptable</strong> from the App Store</div>
+      <div><span class="step-num">1</span>Install <strong>Scriptable</strong> from the App Store</div>
       <div><span class="step-num">2</span>Open this page in <strong>Safari</strong> on your iPhone</div>
-      <div><span class="step-num">3</span>Tap <strong>Install in Scriptable</strong></div>
-      <div><span class="step-num">4</span>Add a large Scriptable widget to your home screen</div>
-      <div><span class="step-num">5</span>Select <strong>einundzwanzig</strong> as the script</div>
+      <div><span class="step-num">3</span>Tap <strong>Download Widget File</strong></div>
+      <div><span class="step-num">4</span>Tap <strong>Share ↗</strong> → <strong>Open in Scriptable</strong></div>
+      <div><span class="step-num">5</span>Add a large <strong>Scriptable</strong> widget to your home screen and select <strong>einundzwanzig</strong></div>
     </div>
 
     <div class="note">
@@ -125,44 +114,5 @@
     </div>
 
   </div>
-
-  <script>
-    const RAW_URL = 'https://raw.githubusercontent.com/orangedmind/einundzwanzig_widget/readme/einundzwanzig_v9.scriptable'
-
-    function installScript() {
-      const encoded = encodeURIComponent(RAW_URL)
-      // Try both known URL schemes
-      const urls = [
-        'scriptable:///import?url=' + encoded,
-        'scriptable://import?url=' + encoded,
-      ]
-
-      let tried = 0
-      const status = document.getElementById('status')
-
-      function tryNext() {
-        if (tried >= urls.length) {
-          status.innerHTML = '⚠️ Could not open Scriptable. Make sure it is installed and try again in Safari.'
-          return
-        }
-        status.textContent = 'Opening Scriptable…'
-        window.location.href = urls[tried]
-        tried++
-        // If still here after 1.5s, try next scheme
-        setTimeout(tryNext, 1500)
-      }
-
-      tryNext()
-    }
-
-    // Auto-trigger on iOS Safari page load
-    window.addEventListener('DOMContentLoaded', function () {
-      const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent)
-      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-      if (isIOS && isSafari) {
-        setTimeout(installScript, 600)
-      }
-    })
-  </script>
 </body>
 </html>
