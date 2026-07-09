@@ -44,39 +44,20 @@ Displays live Bitcoin data directly on your iOS home screen: block height, mempo
 
 First, install [Scriptable](https://apps.apple.com/app/scriptable/id1405459188) from the App Store.
 
-### Method 1: One-Click Install (Recommended)
+### Setup Instructions
 
-**Use this on your iPhone in Safari:**
+1. **On your iPhone**, open this repository in Safari
+2. Find the `einundzwanzig_v*.js` file and tap the **Raw** button to view the full code
+3. Select all the code (**Ctrl+A** or **Cmd+A**) and copy it
+4. Open the **Scriptable** app on your iPhone
+5. Tap the **+** button in the top right corner to create a new script
+6. Paste the code into the editor
+7. Tap the script name at the bottom and rename it to `Einundzwanzig`
+9. Go to your home screen, long-press, tap **+** and search for **Scriptable**
+10. Add the **large widget size** and edit it to select the `Einundzwanzig` script
+11. The widget is now ready and will display Bitcoin data on your home screen
 
-[![Install in Scriptable](https://img.shields.io/badge/Install-Scriptable-F7931A?style=for-the-badge)](https://orangedmind.github.io/einundzwanzig_widget/install)
-
-> **⚠️ Important:** This button only works in **Safari on iOS**. If you're on a Mac, iPad, or using Chrome/Firefox, use Method 2 below.
-
-**How it works:**
-1. Tap the badge above on your iPhone (in Safari)
-2. Scriptable will open automatically and import the script
-3. Go to your home screen, long-press, tap **+** and search for **Scriptable**
-4. Add the large widget size and edit it to select the `Einundzwanzig` script
-
-### Method 2: Manual import via GitHub
-
-If the one-click install doesn't work:
-
-1. Open this repository in **Safari on your iPhone**
-2. Find the `einundzwanzig_v9.scriptable` file and tap it
-3. Scriptable will open automatically and import the script
-4. Go to your home screen, long-press, tap **+** and search for **Scriptable**
-5. Add the large widget size and edit it to select the `Einundzwanzig` script
-
-### Method 3: Manual copy-paste
-
-For manual setup:
-
-1. Open Scriptable and tap **+** in the top right corner
-2. Paste the contents of `einundzwanzig_v9.js` into the editor
-3. Tap the script name at the bottom and rename it to `Einundzwanzig`
-4. Go to your home screen, long-press, tap **+** and search for **Scriptable**
-5. Add the large widget size and edit it to select the `Einundzwanzig` script
+The widget will update automatically whenever you open it, showing live data from the configured APIs.
 
 ---
 
@@ -176,3 +157,19 @@ const TIMEOUT_SEC = 6
 ```
 
 If an API does not respond within this time, the fallback URL is tried. Increase this value if you are on a slow connection, decrease it if you want faster failover.
+
+---
+
+## Version History
+
+| Version | Changes |
+|---|---|
+| **v9** | mono theme adjustments; script converted from `.md` (code block inside Markdown) to a plain `.js` file for easier install, new readme |
+| **v8** | Added fallback APIs for hashrate and difficulty (mempool.blitzi.me) |
+| **v7** | Fallback URLs for all data sources; new **mono** theme; **classic** theme reworked to show all 7 data sections |
+| **v6** | Parallel API requests, per-request timeout handling, status indicator (🟢 / 🟡 / 🔴) |
+| **v5** | New screenshots, general code cleanup |
+| **v4** | Icon/color tweaks |
+| **v3** | Minor fixes and block height updates |
+| **v2** | Added font scaling option for smaller devices (iPhone SE) |
+| **v1** | Initial release by [FlashmanBTC](https://twitter.com/FlashmanBTC) — block height widget |
