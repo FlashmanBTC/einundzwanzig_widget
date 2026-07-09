@@ -48,7 +48,7 @@ First, install [Scriptable](https://apps.apple.com/app/scriptable/id1405459188) 
 
 **Use this on your iPhone in Safari:**
 
-[![Install in Scriptable](https://img.shields.io/badge/Install-Scriptable-F7931A?style=for-the-badge&logo=scriptable)](https://raw.githubusercontent.com/orangedmind/einundzwanzig_widget/readme/einundzwanzig.scriptable)
+[![Install in Scriptable](https://img.shields.io/badge/Install-Scriptable-F7931A?style=for-the-badge&logo=scriptable)](https://raw.githubusercontent.com/orangedmind/einundzwanzig_widget/readme/einundzwanzig_v9.scriptable)
 
 > **⚠️ Important:** This button only works in **Safari on iOS**. If you're on a Mac, iPad, or using Chrome/Firefox, use Method 2 below.
 
