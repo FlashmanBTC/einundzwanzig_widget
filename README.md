@@ -42,12 +42,41 @@ Displays live Bitcoin data directly on your iOS home screen: block height, mempo
 
 ## Installation
 
-1. Install [Scriptable](https://apps.apple.com/app/scriptable/id1405459188) from the App Store
-2. Open Scriptable and tap **+** in the top right corner
-3. Paste the contents of `einundzwanzig.js` into the editor
-4. Tap the script name at the bottom and rename it to `Einundzwanzig`
-5. Go to your home screen, long-press, tap **+** and search for **Scriptable**
-6. Add the large widget size and edit it to select the `Einundzwanzig` script
+First, install [Scriptable](https://apps.apple.com/app/scriptable/id1405459188) from the App Store.
+
+### Method 1: One-Click Install (Recommended)
+
+**Use this on your iPhone in Safari:**
+
+[![Install in Scriptable](https://img.shields.io/badge/Install-Scriptable-F7931A?style=for-the-badge&logo=scriptable)](https://raw.githubusercontent.com/FlashmanBTC/einundzwanzig_widget/main/einundzwanzig_v9.scriptable)
+
+> **⚠️ Important:** This button only works in **Safari on iOS**. If you're on a Mac, iPad, or using Chrome/Firefox, use Method 2 below.
+
+**How it works:**
+1. Tap the badge above on your iPhone (in Safari)
+2. Scriptable will open automatically and import the script
+3. Go to your home screen, long-press, tap **+** and search for **Scriptable**
+4. Add the large widget size and edit it to select the `Einundzwanzig` script
+
+### Method 2: Manual import via GitHub
+
+If the one-click install doesn't work:
+
+1. Open this repository in **Safari on your iPhone**
+2. Find the `einundzwanzig_v9.scriptable` file and tap it
+3. Scriptable will open automatically and import the script
+4. Go to your home screen, long-press, tap **+** and search for **Scriptable**
+5. Add the large widget size and edit it to select the `Einundzwanzig` script
+
+### Method 3: Manual copy-paste
+
+For manual setup:
+
+1. Open Scriptable and tap **+** in the top right corner
+2. Paste the contents of `einundzwanzig_v9.js` into the editor
+3. Tap the script name at the bottom and rename it to `Einundzwanzig`
+4. Go to your home screen, long-press, tap **+** and search for **Scriptable**
+5. Add the large widget size and edit it to select the `Einundzwanzig` script
 
 ---
 
