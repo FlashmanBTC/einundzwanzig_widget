@@ -31,9 +31,7 @@
       margin-bottom: 4px;
     }
 
-    .logo span {
-      color: #F7931A;
-    }
+    .logo span { color: #F7931A; }
 
     .subtitle {
       font-size: 13px;
@@ -51,6 +49,9 @@
       padding: 16px 24px;
       border-radius: 14px;
       margin-bottom: 16px;
+      cursor: pointer;
+      border: none;
+      width: 100%;
       transition: opacity 0.15s;
     }
 
@@ -70,9 +71,7 @@
       line-height: 1.6;
     }
 
-    .note a {
-      color: #888888;
-    }
+    .note a { color: #888888; }
 
     .steps {
       text-align: left;
@@ -85,28 +84,16 @@
       color: #aaaaaa;
     }
 
-    .steps strong {
-      color: #ffffff;
-    }
+    .steps strong { color: #ffffff; }
+    .step-num { color: #F7931A; font-weight: 700; margin-right: 8px; }
 
-    .step-num {
-      color: #F7931A;
-      font-weight: 700;
-      margin-right: 8px;
+    #status {
+      font-size: 13px;
+      color: #888888;
+      margin-top: 12px;
+      min-height: 20px;
     }
   </style>
-  <script>
-    // Auto-redirect on iOS Safari after short delay
-    window.addEventListener('DOMContentLoaded', function () {
-      const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent)
-      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-      if (isIOS && isSafari) {
-        setTimeout(function () {
-          window.location.href = "scriptable:///import?url=https://raw.githubusercontent.com/orangedmind/einundzwanzig_widget/readme/einundzwanzig_v9.scriptable"
-        }, 800)
-      }
-    })
-  </script>
 </head>
 <body>
   <div class="card">
@@ -114,13 +101,15 @@
     <div class="logo">EINUNDZWANZIG<span>●</span></div>
     <div class="subtitle">Bitcoin Widget for Scriptable · iOS</div>
 
-    <a class="btn" href="scriptable:///import?url=https://raw.githubusercontent.com/orangedmind/einundzwanzig_widget/readme/einundzwanzig_v9.scriptable">
+    <button class="btn" onclick="installScript()">
       Install in Scriptable
-    </a>
+    </button>
 
     <a class="btn btn-secondary" href="https://apps.apple.com/app/scriptable/id1405459188">
       Get Scriptable (free)
     </a>
+
+    <div id="status"></div>
 
     <div class="steps">
       <div><span class="step-num">1</span><strong>Install Scriptable</strong> from the App Store</div>
@@ -136,5 +125,44 @@
     </div>
 
   </div>
+
+  <script>
+    const RAW_URL = 'https://raw.githubusercontent.com/orangedmind/einundzwanzig_widget/main/einundzwanzig.scriptable'
+
+    function installScript() {
+      const encoded = encodeURIComponent(RAW_URL)
+      // Try both known URL schemes
+      const urls = [
+        'scriptable:///import?url=' + encoded,
+        'scriptable://import?url=' + encoded,
+      ]
+
+      let tried = 0
+      const status = document.getElementById('status')
+
+      function tryNext() {
+        if (tried >= urls.length) {
+          status.innerHTML = '⚠️ Could not open Scriptable. Make sure it is installed and try again in Safari.'
+          return
+        }
+        status.textContent = 'Opening Scriptable…'
+        window.location.href = urls[tried]
+        tried++
+        // If still here after 1.5s, try next scheme
+        setTimeout(tryNext, 1500)
+      }
+
+      tryNext()
+    }
+
+    // Auto-trigger on iOS Safari page load
+    window.addEventListener('DOMContentLoaded', function () {
+      const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent)
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+      if (isIOS && isSafari) {
+        setTimeout(installScript, 600)
+      }
+    })
+  </script>
 </body>
 </html>
