@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Install Einundzwanzig Widget</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #151515;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .logo span {
+      color: #F7931A;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #888888;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      display: block;
+      background: #F7931A;
+      color: #000000;
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 16px 24px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      transition: opacity 0.15s;
+    }
+
+    .btn:active { opacity: 0.8; }
+
+    .btn-secondary {
+      background: #1e1e1e;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #555555;
+      margin-top: 32px;
+      line-height: 1.6;
+    }
+
+    .note a {
+      color: #888888;
+    }
+
+    .steps {
+      text-align: left;
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 2;
+      color: #aaaaaa;
+    }
+
+    .steps strong {
+      color: #ffffff;
+    }
+
+    .step-num {
+      color: #F7931A;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+  </style>
+  <script>
+    // Auto-redirect on iOS Safari after short delay
+    window.addEventListener('DOMContentLoaded', function () {
+      const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent)
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+      if (isIOS && isSafari) {
+        setTimeout(function () {
+          window.location.href = "scriptable:///import?url=https://raw.githubusercontent.com/orangedmind/einundzwanzig_widget/readme/einundzwanzig_v9.scriptable"
+        }, 800)
+      }
+    })
+  </script>
+</head>
+<body>
+  <div class="card">
+
+    <div class="logo">EINUNDZWANZIG<span>●</span></div>
+    <div class="subtitle">Bitcoin Widget for Scriptable · iOS</div>
+
+    <a class="btn" href="scriptable:///import?url=https://raw.githubusercontent.com/orangedmind/einundzwanzig_widget/readme/einundzwanzig_v9.scriptable">
+      Install in Scriptable
+    </a>
+
+    <a class="btn btn-secondary" href="https://apps.apple.com/app/scriptable/id1405459188">
+      Get Scriptable (free)
+    </a>
+
+    <div class="steps">
+      <div><span class="step-num">1</span><strong>Install Scriptable</strong> from the App Store</div>
+      <div><span class="step-num">2</span>Open this page in <strong>Safari</strong> on your iPhone</div>
+      <div><span class="step-num">3</span>Tap <strong>Install in Scriptable</strong></div>
+      <div><span class="step-num">4</span>Add a large Scriptable widget to your home screen</div>
+      <div><span class="step-num">5</span>Select <strong>einundzwanzig</strong> as the script</div>
+    </div>
+
+    <div class="note">
+      ⚠️ Must be opened in <strong>Safari</strong> on iOS — not Chrome or the GitHub app.<br><br>
+      <a href="https://github.com/orangedmind/einundzwanzig_widget">View on GitHub</a>
+    </div>
+
+  </div>
+</body>
+</html>
