@@ -4,6 +4,8 @@ A Bitcoin data widget for iOS built with [Scriptable](https://scriptable.app), o
 
 Displays live Bitcoin data directly on your iOS home screen: block height, mempool fees, Moscow Time, BTC price, circulating supply, hashrate, and difficulty adjustment.
 
+> **On Android?** There is a native version with the same data and themes: [einundzwanzig_widget_android](https://github.com/FlashmanBTC/einundzwanzig_widget_android)
+
 <img src="images/theme_classic.JPEG" alt="Classic Theme" width="300">
 <img src="images/theme_mono.JPEG" alt="Mono Theme" width="300">
 
