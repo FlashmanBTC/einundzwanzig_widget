@@ -126,20 +126,20 @@ const [
     ? fetchWithTimeout('https://blockchain.info/q/totalbc', 'string')
     : Promise.resolve({ ok: true, value: null }),
 
-  // Hashrate: mempool.space -> blitzi.me (self-hosted, VPN-friendly fallback)
+  // Hashrate: mempool.space -> flashman.ch (self-hosted, VPN-friendly fallback)
   show_hash == 1
     ? fetchWithFallback(
         'https://mempool.space/api/v1/mining/hashrate/1m',
-        'https://mempool.blitzi.me/api/v1/mining/hashrate/1m',
+        'https://mempool.flashman.ch/api/v1/mining/hashrate/1m',
         'json'
       )
     : Promise.resolve({ ok: true, value: null }),
 
-  // Difficulty: mempool.space -> blitzi.me (self-hosted, VPN-friendly fallback)
+  // Difficulty: mempool.space -> flashman.ch (self-hosted, VPN-friendly fallback)
   show_diff == 1
     ? fetchWithFallback(
         'https://mempool.space/api/v1/difficulty-adjustment',
-        'https://mempool.blitzi.me/api/v1/difficulty-adjustment',
+        'https://mempool.flashman.ch/api/v1/difficulty-adjustment',
         'json'
       )
     : Promise.resolve({ ok: true, value: null })
