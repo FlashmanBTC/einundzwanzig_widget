@@ -14,7 +14,7 @@ Displays live Bitcoin data directly on your iOS home screen: block height, mempo
 - **Block Height** — current Bitcoin block height
 - **Mempool Fees** — low / medium / high sat/vB fee estimates
 - **Moscow Time** — satoshis per 1 unit of your chosen fiat currency
-- **BTC Price** — current Bitcoin price in EUR, USD, or CHF
+- **BTC Price** — current Bitcoin price in EUR, USD, CHF, GBP, CAD, AUD or JPY
 - **Circulating Supply** — mined BTC in whole coins
 - **Hashrate** — current network hashrate in EH/s
 - **Difficulty Adjustment** — expected change in % and remaining blocks
@@ -24,19 +24,24 @@ Displays live Bitcoin data directly on your iOS home screen: block height, mempo
 - All API requests run **in parallel** with individual timeouts — one slow API never blocks the others
 - Every data source has a **fallback URL** that is tried automatically if the primary fails
 - A **status indicator** (🟢 / 🟡 / 🔴) and timestamp show data freshness at a glance
-- Failed values display `⚠️ n/a` in grey instead of crashing the widget
+- If the primary source is slow, the next fallback starts after 2 seconds instead of waiting for the full timeout
+- **Stale data is rejected**: prices older than one hour and block heights below the last one seen (e.g. from a node that is still syncing) trigger the next fallback
+- **Last known values**: if a source is unreachable, the last good value is shown in grey (for up to 24 hours) and the status line shows its age, e.g. `🔴 08:15 · cache 07:40`
+- Failed values without a cached value display `⚠️ n/a` in dark grey instead of crashing the widget
+- **Update notice**: once a day the widget checks this repository for a newer version and shows `⬆ Update vXX available` — tap the widget to open the repository
 
 ### Data Sources
 
 | Data | Primary | Fallback |
 |---|---|---|
-| Block Height | mempool.space | blockstream.info |
-| Fees | mempool.space | blockstream.info |
-| Moscow Time | blockchain.info | calculated from price |
-| BTC Price | mempool.space | blockchain.info |
-| Supply | blockchain.info | — |
+| Block Height | mempool.space | blockstream.info → mempool.flashman.ch |
+| Fees | mempool.space | blockstream.info → mempool.flashman.ch |
+| BTC Price | mempool.space | blockchain.info → mempool.flashman.ch |
+| Moscow Time | calculated from price | — |
+| Supply | calculated from block height (sum of all block subsidies) | — |
 | Hashrate | mempool.space | mempool.flashman.ch |
 | Difficulty | mempool.space | mempool.flashman.ch |
+| Logo | this repository (downloaded once, then stored on the device) | i.ibb.co |
 
 ---
 
@@ -82,11 +87,22 @@ theme = "mono"
 ### Currency
 
 ```js
-// Change currency EUR or USD or CHF
+// Change currency: EUR, USD, CHF, GBP, CAD, AUD or JPY
 currency = "EUR"
 ```
 
-Affects BTC price and Moscow Time. Supported values: `"EUR"`, `"USD"`, `"CHF"`.
+Affects BTC price and Moscow Time. Supported values: `"EUR"`, `"USD"`, `"CHF"`, `"GBP"`, `"CAD"`, `"AUD"`, `"JPY"`.
+
+---
+
+### Update Check
+
+```js
+// Check once a day whether a new widget version is available (1 = on, 0 = off)
+check_updates = 1
+```
+
+The widget reads [`version.json`](version.json) from this repository at most once a day. If a newer version exists, a line `⬆ Update vXX available` appears under the status line and tapping the widget opens this repository. Nothing is sent except the request itself; set `check_updates = 0` to disable it. The widget never updates itself — you install new versions manually as described above.
 
 ---
 
@@ -112,7 +128,7 @@ All colors can be customized at the top of the script. Both themes pick them up 
 const C_BG        = "#151515"   // widget background
 const C_ACCENT    = "#F7931A"   // main value color (Bitcoin orange)
 const C_LABEL     = "#FFFFFF"   // section / row labels
-const C_DIM       = "#888888"   // status line, subtle text
+const C_DIM       = "#888888"   // status line, subtle text, cached values
 const C_ERROR     = "#555555"   // value color when data unavailable
 const C_DIVIDER   = "#2a2a2a"   // divider lines (mono theme)
 ```
@@ -164,6 +180,7 @@ If an API does not respond within this time, the fallback URL is tried. Increase
 
 | Version | Changes |
 |---|---|
+| **v11** | Update notice (daily check of `version.json`, tap opens the repository); last known values are shown greyed when a source fails; stale data from a syncing node is rejected; next fallback starts after 2 s instead of waiting for the full timeout; mempool.flashman.ch as additional fallback for block height, fees and price; Moscow Time and supply are calculated locally (no more blockchain.info requests for them); logo is stored on the device; currencies GBP, CAD, AUD, JPY; fix: difficulty value in mono theme used the hashrate status for its color; fix: Moscow Time fallback showed leading zeros |
 | **v10** | Fix crash when an API returns an HTTP error (e.g. 503 from fallback): responses are now checked for HTTP status so the fallback and status indicator work correctly; guard for missing difficulty data; fallback server for hashrate and difficulty changed to mempool.flashman.ch |
 | **v9** | mono theme adjustments; script converted from `.md` (code block inside Markdown) to a plain `.js` file for easier install, new readme |
 | **v8** | Added fallback APIs for hashrate and difficulty (mempool.blitzi.me) |
