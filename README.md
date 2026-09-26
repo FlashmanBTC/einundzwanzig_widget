@@ -174,3 +174,8 @@ If an API does not respond within this time, the fallback URL is tried. Increase
 | **v3** | Minor fixes and block height updates |
 | **v2** | Added font scaling option for smaller devices (iPhone SE) |
 | **v1** | Initial release by [FlashmanBTC](https://twitter.com/FlashmanBTC) — block height widget |
+---
+
+## License
+
+[MIT](LICENSE) © 2022-2026 FlashmanBTC and contributors
