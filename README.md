@@ -164,6 +164,7 @@ If an API does not respond within this time, the fallback URL is tried. Increase
 
 | Version | Changes |
 |---|---|
+| **v10** | Fix crash when an API returns an HTTP error (e.g. 503 from fallback): responses are now checked for HTTP status so the fallback and status indicator work correctly; guard for missing difficulty data |
 | **v9** | mono theme adjustments; script converted from `.md` (code block inside Markdown) to a plain `.js` file for easier install, new readme |
 | **v8** | Added fallback APIs for hashrate and difficulty (mempool.blitzi.me) |
 | **v7** | Fallback URLs for all data sources; new **mono** theme; **classic** theme reworked to show all 7 data sections |
