@@ -182,6 +182,7 @@ If an API does not respond within this time, the fallback URL is tried. Increase
 
 | Version | Changes |
 |---|---|
+| **v12** | Fix: widget crashed with `Failed to parse String to BigInt` once the network hashrate passed 1 ZH/s (1000 EH/s) |
 | **v11** | Update notice (daily check of `version.json`, tap opens the repository); last known values are shown greyed when a source fails; stale data from a syncing node is rejected; next fallback starts after 2 s instead of waiting for the full timeout; mempool.flashman.ch as additional fallback for block height, fees and price; Moscow Time and supply are calculated locally (no more blockchain.info requests for them); logo is stored on the device; currencies GBP, CAD, AUD, JPY; fix: difficulty value in mono theme used the hashrate status for its color; fix: Moscow Time fallback showed leading zeros |
 | **v10** | Fix crash when an API returns an HTTP error (e.g. 503 from fallback): responses are now checked for HTTP status so the fallback and status indicator work correctly; guard for missing difficulty data; fallback server for hashrate and difficulty changed to mempool.flashman.ch |
 | **v9** | mono theme adjustments; script converted from `.md` (code block inside Markdown) to a plain `.js` file for easier install, new readme |
